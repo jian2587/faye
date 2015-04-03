@@ -1,6 +1,8 @@
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 #include "Tokenizer.h"
 
 using namespace std;
@@ -177,7 +179,7 @@ Tokenizer::attemptParseKeywordToken (const char *s, int len)
 {
     for (int i = 0; i < NUM_KEYWORDS; ++i) {
         if (len == keyword_tokens[i].len
-         && 0 == strncmp (s, keyword_tokens[i].keyword, len)) {
+         && 0 == strncmp (s, keyword_tokens[i].keyword, (size_t)len)) {
             return makeToken (keyword_tokens[i].token_type, len);
         }
     }
